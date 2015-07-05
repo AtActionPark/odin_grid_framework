@@ -1,52 +1,95 @@
-/* CSS RESET */
+@import 'reset';
+@import 'font';
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+$pad: 10px;
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* END RESET */
+@mixin unfold {
+  float:left;
+}
+
+
+.container{
+  margin:  $pad auto;
+}
+
+.row{
+  float: none;
+}
+
+.container, .row{
+  content: " ";
+  display:table;
+  clear:both;
+}
+
+
+
+[class*="column"]{
+  display:block;
+  width:100%;
+  padding-bottom:$pad;
+  padding-top:$pad;
+
+  padding-left:$pad / 2;
+  padding-right: $pad / 2;
+
+  &:first-of-type {
+    padding-left: $pad;
+  }
+  &:last-of-type {
+    padding-right: $pad;
+  }
+}
+
+.draw{
+  border:1px solid black;
+}
+
+@media (min-width: 768px) {
+  .container, .row {
+    width: 750px;
+  }
+  [class*="column-sm"]{
+    @include unfold
+  }
+  @for $i from 1 through 12 {
+    .column-sm-#{$i},  {
+      width: $i*8.333333%;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .container, .row {
+    width: 970px;
+  }
+  [class*="column-md"]{
+    @include unfold
+  }
+  @for $i from 1 through 12 {
+    .column-md-#{$i} {
+      width: $i*8.333333%;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .container, .row {
+    width: 1170px;
+  }
+  [class*="column-lg"]{
+    @include unfold
+  }
+  @for $i from 1 through 12 {
+    .column-lg-#{$i} {
+      width: $i*8.333333%;
+    }
+  }
+}
+
+
+
