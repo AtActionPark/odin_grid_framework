@@ -1,7 +1,7 @@
 @import 'reset';
 @import 'font';
 
-$pad: 10px;
+$pad: 20px;
 
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -9,17 +9,25 @@ $pad: 10px;
   box-sizing: border-box;
 }
 
-@mixin unfold {
+@mixin unfold{
   float:left;
+  padding-right:$pad;
+
+  [class*="column"]{
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
 }
 
-
 .container{
-  margin:  $pad auto;
+  margin:  0 auto;
+  padding: $pad $pad;
 }
 
 .row{
   float: none;
+  margin:0 auto;
 }
 
 .container, .row{
@@ -28,32 +36,23 @@ $pad: 10px;
   clear:both;
 }
 
-
-
-[class*="column"]{
-  display:block;
-  width:100%;
-  padding-bottom:$pad;
-  padding-top:$pad;
-
-  padding-left:$pad / 2;
-  padding-right: $pad / 2;
-
-  &:first-of-type {
-    padding-left: $pad;
-  }
-  &:last-of-type {
-    padding-right: $pad;
+@for $i from 1 through 12 {
+  .column-xs-#{$i},  {
+    width: $i*8.333333%;
+    float:left;
   }
 }
 
-.draw{
+div.draw{
   border:1px solid black;
 }
 
 @media (min-width: 768px) {
-  .container, .row {
+  .container {
     width: 750px;
+  }
+  .row{
+    width:100%;
   }
   [class*="column-sm"]{
     @include unfold
@@ -64,9 +63,13 @@ $pad: 10px;
     }
   }
 }
+
 @media (min-width: 992px) {
-  .container, .row {
+  .container {
     width: 970px;
+  }
+  .row{
+    width:100%;
   }
   [class*="column-md"]{
     @include unfold
@@ -77,9 +80,13 @@ $pad: 10px;
     }
   }
 }
+
 @media (min-width: 1200px) {
-  .container, .row {
+  .container {
     width: 1170px;
+  }
+  .row{
+    width:100%;
   }
   [class*="column-lg"]{
     @include unfold
