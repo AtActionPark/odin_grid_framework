@@ -7,6 +7,7 @@ This framework is heavily inspired by bootstrap, but only reproduces the fluid/r
 
 * 12 column grid.
 * Columns defined inside rows, inside containers.
+* Nested rows and columns
 * 4 different column "size" (xs, sm, md, lg), for responsive behaviour at different breakpoint
 * Syntax is "column-md-6"
 * CSS reset
