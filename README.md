@@ -11,5 +11,3 @@ This framework is heavily inspired by bootstrap, but only reproduces the fluid/r
 * Syntax is "column-md-6"
 * CSS reset
 * Very basic font styling
-
-It was developed
